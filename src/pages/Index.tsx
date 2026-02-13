@@ -3,7 +3,7 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/home/Hero";
 import Stats from "@/components/home/Stats";
 import About from "@/components/home/About";
-import Pillars from "@/components/home/Pillars";
+import FocusAreas from "@/components/home/FocusAreas";
 import Sectors from "@/components/home/Sectors";
 import Awards from "@/components/home/Awards";
 import Packages from "@/components/home/Packages";
@@ -18,7 +18,7 @@ const Index = () => {
       <Hero />
       <Stats />
       <About />
-      <Pillars />
+      <FocusAreas />
       <Sectors />
       <Awards />
       <Packages />
