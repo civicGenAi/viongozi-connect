@@ -35,9 +35,9 @@ const Header = () => {
         isScrolled ? "bg-background shadow-md" : "bg-background/95 backdrop-blur-sm"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
+      <div className="container mx-auto flex items-center justify-between h-20 md:h-24 px-4">
         <Link to="/" className="flex-shrink-0">
-          <img src={logo} alt="Leader's Forum" className="h-12 md:h-14 w-auto" />
+          <img src={logo} alt="Leader's Forum" className="h-16 md:h-20 w-auto" />
         </Link>
 
         {/* Desktop Nav */}
