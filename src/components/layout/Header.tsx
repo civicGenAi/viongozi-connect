@@ -10,6 +10,7 @@ const navItems = [
   { label: "Forums", href: "/forums" },
   { label: "Sectors", href: "/sectors" },
   { label: "Programs", href: "/programs" },
+  { label: "Rewards", href: "/rewards" },
   { label: "Contact", href: "/contact" },
 ];
 
