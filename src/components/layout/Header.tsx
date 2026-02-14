@@ -32,13 +32,21 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background shadow-md" : "bg-background/95 backdrop-blur-sm"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? "bg-primary shadow-lg"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between h-20 md:h-24 px-4">
         <Link to="/" className="flex-shrink-0">
-          <img src={logo} alt="Leader's Forum" className="h-16 md:h-20 w-auto" />
+          <img
+            src={logo}
+            alt="Leader's Forum"
+            className={`h-14 md:h-20 w-auto transition-all duration-300 ${
+              isScrolled ? "brightness-0 invert" : ""
+            }`}
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -48,9 +56,13 @@ const Header = () => {
               key={item.label}
               to={item.href}
               className={`px-3 py-2 text-sm font-medium transition-colors ${
-                location.pathname === item.href
-                  ? "text-primary font-semibold"
-                  : "text-foreground/80 hover:text-primary"
+                isScrolled
+                  ? location.pathname === item.href
+                    ? "text-accent font-semibold"
+                    : "text-primary-foreground/90 hover:text-accent"
+                  : location.pathname === item.href
+                    ? "text-accent font-semibold"
+                    : "text-primary-foreground/90 hover:text-accent"
               }`}
             >
               {item.label}
@@ -66,7 +78,9 @@ const Header = () => {
 
         {/* Mobile toggle */}
         <button
-          className="lg:hidden p-2 text-foreground"
+          className={`lg:hidden p-2 transition-colors ${
+            isScrolled ? "text-primary-foreground" : "text-primary-foreground"
+          }`}
           onClick={() => setIsMobileOpen(!isMobileOpen)}
           aria-label="Toggle menu"
         >
@@ -76,22 +90,22 @@ const Header = () => {
 
       {/* Mobile menu */}
       {isMobileOpen && (
-        <div className="lg:hidden bg-background border-t border-border">
-          <nav className="container mx-auto px-4 py-4 flex flex-col gap-2">
+        <div className={`lg:hidden ${isScrolled ? "bg-primary" : "bg-primary/95 backdrop-blur-md"} border-t border-primary-foreground/10`}>
+          <nav className="container mx-auto px-4 py-4 flex flex-col gap-1">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 to={item.href}
-                className={`px-3 py-3 font-medium transition-colors ${
+                className={`px-3 py-3 font-medium transition-colors rounded-lg ${
                   location.pathname === item.href
-                    ? "text-primary font-semibold"
-                    : "text-foreground/80 hover:text-primary"
+                    ? "text-accent bg-primary-foreground/10 font-semibold"
+                    : "text-primary-foreground/80 hover:text-accent hover:bg-primary-foreground/5"
                 }`}
               >
                 {item.label}
               </Link>
             ))}
-            <Button variant="accent" className="mt-2" asChild>
+            <Button variant="accent" className="mt-3" asChild>
               <Link to="/register">Register Now</Link>
             </Button>
           </nav>

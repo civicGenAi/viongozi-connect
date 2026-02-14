@@ -17,7 +17,6 @@ const areas = [
       "Youth political participation, rule of law, and democratic engagement for a stronger Tanzania.",
     highlights: ["Youth in Politics", "Rule of Law", "Democratic Participation"],
     href: "/focus/politics",
-    color: "from-primary to-primary/80",
   },
   {
     icon: Globe,
@@ -26,7 +25,6 @@ const areas = [
       "Peace, security, humanitarian action, and human rights on the global stage.",
     highlights: ["Peace & Security", "Human Rights (UN)", "Humanitarian Action"],
     href: "/focus/diplomacy",
-    color: "from-accent to-accent/80",
   },
   {
     icon: Briefcase,
@@ -35,7 +33,6 @@ const areas = [
       "Empowering startups, strengthening enterprises, and partnering with financial institutions.",
     highlights: ["Startup Incubation", "Enterprise Growth", "Financial Partnerships"],
     href: "/focus/business",
-    color: "from-primary to-accent",
   },
   {
     icon: Leaf,
@@ -44,7 +41,6 @@ const areas = [
       "Food security, climate adaptation, and sustainable agricultural policy for future generations.",
     highlights: ["Food Security", "Climate Adaptation", "Agricultural Policy"],
     href: "/focus/climate",
-    color: "from-green-600 to-green-500",
   },
   {
     icon: Landmark,
@@ -53,18 +49,17 @@ const areas = [
       "Accountability, transparency, public services, social justice, and international cooperation.",
     highlights: ["Accountability", "Public Services", "Social Justice"],
     href: "/focus/policy",
-    color: "from-primary to-primary/70",
   },
 ];
 
 const FocusAreas = () => (
-  <section className="section-padding bg-background">
+  <section className="section-padding bg-secondary overflow-hidden">
     <div className="container mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-14"
+        className="text-center mb-16"
       >
         <span className="text-accent font-semibold text-sm uppercase tracking-widest mb-2 block">
           What We Champion
@@ -78,49 +73,79 @@ const FocusAreas = () => (
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {areas.map((area, i) => (
-          <motion.div
-            key={area.title}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-            className={`group relative rounded-2xl overflow-hidden bg-gradient-to-br ${area.color} p-[2px] hover-lift ${
-              i === 2 ? "md:col-span-2 lg:col-span-1" : ""
-            }`}
-          >
-            <Link
-              to={area.href}
-              className="block bg-background rounded-2xl p-7 h-full"
+      {/* Staircase / stepped layout */}
+      <div className="relative max-w-5xl mx-auto">
+        {/* Vertical connecting line */}
+        <div className="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-px bg-gradient-to-b from-accent via-primary to-accent/30 hidden md:block" />
+
+        {areas.map((area, i) => {
+          const isLeft = i % 2 === 0;
+          return (
+            <motion.div
+              key={area.title}
+              initial={{ opacity: 0, x: isLeft ? -60 : 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className={`relative flex items-start mb-6 md:mb-0 ${
+                isLeft ? "md:flex-row" : "md:flex-row-reverse"
+              }`}
+              style={{ marginTop: i === 0 ? 0 : undefined }}
             >
-              <area.icon
-                className="text-accent mb-4"
-                size={36}
-                strokeWidth={1.5}
-              />
-              <h3 className="text-xl font-heading font-bold text-foreground mb-2">
-                {area.title}
-              </h3>
-              <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
-                {area.description}
-              </p>
-              <div className="flex flex-wrap gap-2 mb-5">
-                {area.highlights.map((h) => (
-                  <span
-                    key={h}
-                    className="text-xs bg-secondary text-foreground/80 px-3 py-1 rounded-full"
-                  >
-                    {h}
-                  </span>
-                ))}
+              {/* Timeline dot */}
+              <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-10">
+                <motion.div
+                  whileInView={{ scale: [0, 1.2, 1] }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.15 }}
+                  className="w-12 h-12 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/30"
+                >
+                  <area.icon className="text-accent" size={20} strokeWidth={1.5} />
+                </motion.div>
               </div>
-              <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:text-accent transition-colors">
-                Explore <ArrowRight size={14} />
-              </span>
-            </Link>
-          </motion.div>
-        ))}
+
+              {/* Card - offset to create stair effect */}
+              <div
+                className={`md:w-1/2 ${isLeft ? "md:pr-16" : "md:pl-16"}`}
+                style={{ marginTop: `${i * 20}px` }}
+              >
+                <Link to={area.href} className="group block">
+                  <div className="relative bg-card rounded-2xl p-6 md:p-8 border border-border hover:border-accent/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    {/* Step number */}
+                    <span className="absolute -top-3 left-6 bg-accent text-accent-foreground text-xs font-bold px-3 py-1 rounded-full">
+                      0{i + 1}
+                    </span>
+
+                    {/* Mobile icon */}
+                    <div className="md:hidden w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                      <area.icon className="text-primary" size={20} strokeWidth={1.5} />
+                    </div>
+
+                    <h3 className="text-lg md:text-xl font-heading font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                      {area.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                      {area.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {area.highlights.map((h) => (
+                        <span
+                          key={h}
+                          className="text-xs bg-secondary text-foreground/70 px-3 py-1 rounded-full border border-border"
+                        >
+                          {h}
+                        </span>
+                      ))}
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:text-accent transition-colors">
+                      Explore <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
+                </Link>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </div>
   </section>
