@@ -5,6 +5,13 @@ import { Link } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
+import event1 from "@/assets/events/event-1.jpg";
+import event2 from "@/assets/events/event-2.jpg";
+import event3 from "@/assets/events/event-3.jpg";
+import event4 from "@/assets/events/event-4.jpg";
+import event5 from "@/assets/events/event-5.jpg";
+import event6 from "@/assets/events/event-6.jpg";
+
 const agenda = [
   { time: "8:00 AM", title: "Registration & Breakfast Networking", desc: "Check-in and connect over breakfast" },
   { time: "9:00 AM", title: "Opening Ceremony & Keynote Address", desc: "Welcome remarks and keynote by industry leaders" },
@@ -32,6 +39,15 @@ const packages = [
     features: ["VIP seating", "One-on-one mentorship", "All networking events", "Award ceremony access", "Post-forum consultations", "Media exposure"],
     missing: [],
   },
+];
+
+const pastEvents = [
+  { image: event1, title: "Leaders Forum 2025", date: "June 2025", attendees: "450+", slug: "leaders-forum-2025" },
+  { image: event4, title: "Business Awards Gala 2024", date: "December 2024", attendees: "300+", slug: "business-awards-2024" },
+  { image: event5, title: "Entrepreneurship Summit 2024", date: "March 2024", attendees: "280+", slug: "entrepreneurship-summit-2024" },
+  { image: event2, title: "Networking Mixer 2024", date: "August 2024", attendees: "150+", slug: "leaders-forum-2025" },
+  { image: event3, title: "Panel Discussion Series", date: "May 2024", attendees: "200+", slug: "leaders-forum-2025" },
+  { image: event6, title: "Annual Business Summit 2023", date: "November 2023", attendees: "380+", slug: "leaders-forum-2025" },
 ];
 
 const Forums = () => (
@@ -114,7 +130,7 @@ const Forums = () => (
                   ))}
                 </div>
                 <Button variant={pkg.popular ? "accent" : "outline"} className="w-full" asChild>
-                  <Link to="/register">Select {pkg.name} <ArrowRight size={14} /></Link>
+                  <Link to="/cart">Select {pkg.name} <ArrowRight size={14} /></Link>
                 </Button>
               </motion.div>
             ))}
@@ -126,11 +142,32 @@ const Forums = () => (
       <section className="section-padding bg-background">
         <div className="container mx-auto">
           <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-12">Past Events</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="aspect-video bg-muted rounded-lg flex items-center justify-center text-muted-foreground text-sm hover:bg-muted/80 transition-colors">
-                Event Photo {i + 1}
-              </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+            {pastEvents.map((event, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+              >
+                <Link to={`/events/${event.slug}`} className="group block">
+                  <div className="aspect-video rounded-t-xl overflow-hidden">
+                    <img
+                      src={event.image}
+                      alt={event.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="bg-card border border-t-0 border-border rounded-b-xl p-4">
+                    <h3 className="font-heading font-bold text-sm group-hover:text-accent transition-colors">{event.title}</h3>
+                    <div className="flex justify-between items-center mt-2">
+                      <span className="text-xs text-muted-foreground flex items-center gap-1"><Calendar size={10} /> {event.date}</span>
+                      <span className="text-xs text-muted-foreground flex items-center gap-1"><Users size={10} /> {event.attendees}</span>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -142,7 +179,7 @@ const Forums = () => (
           <h2 className="text-2xl md:text-3xl font-heading font-bold text-accent-foreground mb-4">Secure Your Spot Today</h2>
           <p className="text-accent-foreground/80 mb-6">Limited seats available — register now before they're gone!</p>
           <Button variant="ctaWhite" size="lg" asChild>
-            <Link to="/register">Register Now <ArrowRight size={16} /></Link>
+            <Link to="/cart">Register Now <ArrowRight size={16} /></Link>
           </Button>
         </div>
       </section>

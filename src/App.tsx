@@ -11,6 +11,10 @@ import Programs from "./pages/Programs";
 import Contact from "./pages/Contact";
 import Register from "./pages/Register";
 import Rewards from "./pages/Rewards";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import PaymentSuccess from "./pages/PaymentSuccess";
+import EventDetail from "./pages/EventDetail";
 import Politics from "./pages/focus/Politics";
 import Diplomacy from "./pages/focus/Diplomacy";
 import Business from "./pages/focus/Business";
@@ -35,6 +39,10 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/register" element={<Register />} />
           <Route path="/rewards" element={<Rewards />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/events/:slug" element={<EventDetail />} />
           <Route path="/focus/politics" element={<Politics />} />
           <Route path="/focus/diplomacy" element={<Diplomacy />} />
           <Route path="/focus/business" element={<Business />} />

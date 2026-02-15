@@ -1,6 +1,7 @@
 import { Check, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const packages = [
   {
@@ -78,8 +79,8 @@ const Packages = () => (
                 </li>
               ))}
             </ul>
-            <Button variant={pkg.btnVariant} className="w-full" size="lg">
-              {pkg.btnLabel}
+            <Button variant={pkg.btnVariant} className="w-full" size="lg" asChild>
+              <Link to="/cart">{pkg.btnLabel}</Link>
             </Button>
           </motion.div>
         ))}
