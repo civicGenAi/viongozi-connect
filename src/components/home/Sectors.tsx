@@ -1,21 +1,27 @@
-import { Sparkles, Factory, Mountain, Wheat, Truck, Megaphone, Music } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
+import beautyImg from "@/assets/sectors/beauty.jpg";
+import manufacturingImg from "@/assets/sectors/manufacturing.jpg";
+import miningImg from "@/assets/sectors/mining.jpg";
+import agricultureImg from "@/assets/sectors/agriculture.jpg";
+import transportImg from "@/assets/sectors/transport.jpg";
+import influencersImg from "@/assets/sectors/influencers.jpg";
+import musicImg from "@/assets/sectors/music.jpg";
+
 const sectors = [
-  { name: "Beauty & Cosmetics", sub: "Premium skincare & beauty products", icon: Sparkles, gradient: "from-pink-500 to-rose-600" },
-  { name: "Manufacturing", sub: "Industrial growth & production", icon: Factory, gradient: "from-blue-600 to-indigo-700" },
-  { name: "Mining", sub: "Mineral resources & extraction", icon: Mountain, gradient: "from-amber-600 to-orange-700" },
-  { name: "Agriculture", sub: "Farming & food production", icon: Wheat, gradient: "from-green-500 to-emerald-700" },
-  { name: "Transport & Logistics", sub: "Supply chain & delivery", icon: Truck, gradient: "from-cyan-500 to-blue-700" },
-  { name: "Influencers", sub: "Digital creators & marketing", icon: Megaphone, gradient: "from-purple-500 to-violet-700" },
-  { name: "Music Industry", sub: "Entertainment & arts", icon: Music, gradient: "from-red-500 to-pink-700" },
+  { name: "Beauty & Cosmetics", sub: "Premium skincare & beauty products", image: beautyImg },
+  { name: "Manufacturing", sub: "Industrial growth & production", image: manufacturingImg },
+  { name: "Mining", sub: "Mineral resources & extraction", image: miningImg },
+  { name: "Agriculture", sub: "Farming & food production", image: agricultureImg },
+  { name: "Transport & Logistics", sub: "Supply chain & delivery", image: transportImg },
+  { name: "Influencers", sub: "Digital creators & marketing", image: influencersImg },
+  { name: "Music Industry", sub: "Entertainment & arts", image: musicImg },
 ];
 
 const Sectors = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll right to left
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
@@ -27,7 +33,6 @@ const Sectors = () => {
     const step = () => {
       if (!paused && el) {
         el.scrollLeft += speed;
-        // Loop: reset to start when reaching end
         if (el.scrollLeft >= el.scrollWidth - el.clientWidth - 1) {
           el.scrollLeft = 0;
         }
@@ -79,7 +84,6 @@ const Sectors = () => {
           className="flex gap-5 overflow-x-auto scrollbar-hide pb-4"
           style={{ scrollbarWidth: "none" }}
         >
-          {/* Duplicate sectors for seamless loop */}
           {[...sectors, ...sectors].map((sector, idx) => (
             <motion.div
               key={`${sector.name}-${idx}`}
@@ -89,21 +93,15 @@ const Sectors = () => {
               transition={{ duration: 0.5, delay: (idx % sectors.length) * 0.08 }}
               className="flex-shrink-0 w-56 md:w-64 group cursor-pointer"
             >
-              {/* Card with gradient top */}
-              <div className={`relative h-44 md:h-52 rounded-t-2xl bg-gradient-to-br ${sector.gradient} overflow-hidden flex items-center justify-center`}>
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <sector.icon size={48} className="text-white/90 drop-shadow-lg" strokeWidth={1.5} />
-                </motion.div>
-                {/* Decorative circles */}
-                <div className="absolute -bottom-6 -right-6 w-24 h-24 rounded-full bg-white/10" />
-                <div className="absolute -top-4 -left-4 w-16 h-16 rounded-full bg-white/5" />
+              <div className="relative h-44 md:h-52 rounded-t-2xl overflow-hidden">
+                <img
+                  src={sector.image}
+                  alt={sector.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
               </div>
 
-              {/* Info bottom */}
               <div className="bg-card border border-t-0 border-border rounded-b-2xl p-4 group-hover:shadow-lg transition-shadow">
                 <h3 className="text-sm md:text-base font-heading font-bold text-foreground">
                   {sector.name}
