@@ -45,12 +45,12 @@ const Testimonials = () => {
           <span className="text-accent font-semibold text-sm uppercase tracking-widest mb-2 block">
             Success Stories
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-black">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-black">
             Transforming Lives, Building Futures
           </h2>
         </motion.div>
 
-        <div className="relative min-h-[280px] md:min-h-[220px]">
+        <div className="relative min-h-[240px] sm:min-h-[280px] md:min-h-[220px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
@@ -60,8 +60,8 @@ const Testimonials = () => {
               transition={{ duration: 0.5 }}
               className="text-center"
             >
-              <Quote className="mx-auto mb-6 text-accent/30" size={48} />
-              <p className="text-lg md:text-xl italic text-muted-foreground mb-8 leading-relaxed max-w-3xl mx-auto">
+              <Quote className="mx-auto mb-4 sm:mb-6 text-accent/30" size={36} />
+              <p className="text-base sm:text-lg md:text-xl italic text-muted-foreground mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto px-2">
                 "{testimonials[current].quote}"
               </p>
               <div>

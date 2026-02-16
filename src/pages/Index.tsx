@@ -5,6 +5,7 @@ import About from "@/components/home/About";
 import Stats from "@/components/home/Stats";
 import FocusAreas from "@/components/home/FocusAreas";
 import Sectors from "@/components/home/Sectors";
+import UpcomingEvents from "@/components/home/UpcomingEvents";
 import Awards from "@/components/home/Awards";
 import Packages from "@/components/home/Packages";
 import Testimonials from "@/components/home/Testimonials";
@@ -20,6 +21,7 @@ const Index = () => {
       <Stats />
       <FocusAreas />
       <Sectors />
+      <UpcomingEvents />
       <Awards />
       <Packages />
       <Testimonials />

@@ -91,9 +91,9 @@ const Sectors = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: (idx % sectors.length) * 0.08 }}
-              className="flex-shrink-0 w-56 md:w-64 group cursor-pointer"
+              className="flex-shrink-0 w-44 sm:w-56 md:w-64 group cursor-pointer"
             >
-              <div className="relative h-44 md:h-52 rounded-t-2xl overflow-hidden">
+              <div className="relative h-36 sm:h-44 md:h-52 rounded-t-2xl overflow-hidden">
                 <img
                   src={sector.image}
                   alt={sector.name}

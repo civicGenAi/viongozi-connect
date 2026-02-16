@@ -39,7 +39,7 @@ const AnimatedNumber = ({ target, suffix, isDecimal }: { target: number; suffix:
   }, [target, isDecimal]);
 
   return (
-    <div ref={ref} className="text-3xl md:text-4xl lg:text-5xl font-heading font-black text-accent">
+    <div ref={ref} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-black text-accent">
       {isDecimal ? count.toFixed(1) : count.toLocaleString()}{suffix}
     </div>
   );
@@ -73,7 +73,7 @@ const Stats = () => (
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -84,27 +84,27 @@ const Stats = () => (
               className="flex flex-col items-center text-center"
             >
               {/* Circular animated icon */}
-              <div className="relative mb-5">
+                <div className="relative mb-4 sm:mb-5">
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 12 + i * 4, repeat: Infinity, ease: "linear" }}
                   className="absolute inset-0 rounded-full border-2 border-dashed border-accent/40"
-                  style={{ width: 96, height: 96 }}
+                  style={{ width: 72, height: 72 }}
                 />
                 <motion.div
                   animate={{ rotate: -360 }}
                   transition={{ duration: 20 + i * 3, repeat: Infinity, ease: "linear" }}
                   className="absolute inset-1 rounded-full border border-primary-foreground/10"
-                  style={{ width: 88, height: 88, top: 4, left: 4 }}
+                  style={{ width: 64, height: 64, top: 4, left: 4 }}
                 />
-                <div className="relative w-24 h-24 rounded-full bg-primary-foreground/10 backdrop-blur-sm flex items-center justify-center">
-                  <stat.icon className="text-accent" size={32} strokeWidth={1.5} />
+                <div className="relative w-[72px] h-[72px] sm:w-24 sm:h-24 rounded-full bg-primary-foreground/10 backdrop-blur-sm flex items-center justify-center">
+                  <stat.icon className="text-accent" size={24} strokeWidth={1.5} />
                 </div>
                 {/* Orbiting dot */}
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 4 + i, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 w-24 h-24"
+                  className="absolute inset-0 w-[72px] h-[72px] sm:w-24 sm:h-24"
                   style={{ transformOrigin: "center" }}
                 >
                   <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-accent shadow-lg shadow-accent/50" />
