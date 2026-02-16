@@ -63,7 +63,7 @@ const Awards = () => (
           <span className="text-gold font-semibold text-sm uppercase tracking-widest mb-3 block">
             Excellence Recognized
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-black text-primary-foreground mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-black text-primary-foreground mb-4">
             Tanzania Business Achievement Awards 2026
           </h2>
           <p className="text-primary-foreground/70 text-lg mb-10 max-w-xl mx-auto leading-relaxed">

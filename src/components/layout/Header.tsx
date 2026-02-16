@@ -41,30 +41,28 @@ const Header = () => {
           : "bg-primary/10 backdrop-blur-sm"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between h-20 md:h-24 px-4">
+      <div className="container mx-auto flex items-center justify-between h-16 sm:h-20 md:h-24 px-4">
         {/* Logo — dominant size */}
         <Link to="/" className="flex-shrink-0">
           <img
             src={logo}
             alt="Leader's Forum"
-            className={`h-14 md:h-[4.5rem] w-auto transition-all duration-300 ${
+            className={`h-10 sm:h-14 md:h-[4.5rem] w-auto transition-all duration-300 ${
               showSolidBg ? "brightness-0 invert" : ""
             }`}
           />
         </Link>
 
         {/* Desktop Nav — shifted right with ml-auto */}
-        <nav className="hidden lg:flex items-center gap-2 ml-auto">
+        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 ml-auto">
           {navItems.map((item) => (
             <Link
               key={item.label}
               to={item.href}
-              className={`relative px-4 py-2 text-sm font-medium tracking-wide transition-all duration-300 ${
+              className={`relative px-3 xl:px-4 py-2 text-sm font-medium tracking-wide transition-all duration-300 ${
                 location.pathname === item.href
                   ? "text-accent font-semibold"
-                  : showSolidBg
-                    ? "text-primary-foreground/90 hover:text-accent"
-                    : "text-primary-foreground/90 hover:text-accent"
+                  : "text-primary-foreground/90 hover:text-accent"
               }`}
             >
               {item.label}

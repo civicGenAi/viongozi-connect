@@ -68,7 +68,7 @@ const Hero = () => {
       <InteractiveWeb />
 
       {/* Content — bottom-left aligned */}
-      <div className="relative z-10 container mx-auto px-4 pb-20 md:pb-28 pt-32">
+      <div className="relative z-10 container mx-auto px-4 pb-12 sm:pb-20 md:pb-28 pt-24 sm:pt-32">
         <div className="max-w-2xl">
           <AnimatePresence mode="wait">
             <motion.div
@@ -82,14 +82,14 @@ const Hero = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 }}
-                className="text-accent font-semibold text-sm uppercase tracking-[0.2em] mb-4"
+                className="text-accent font-semibold text-xs sm:text-sm uppercase tracking-[0.2em] mb-3 sm:mb-4"
               >
                 Leaders Forum 2026
               </motion.p>
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-black text-primary-foreground leading-[1.05] mb-5">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-heading font-black text-primary-foreground leading-[1.05] mb-4 sm:mb-5">
                 {slides[current].headline}
               </h1>
-              <p className="text-base md:text-lg lg:text-xl text-primary-foreground/80 font-light leading-relaxed max-w-xl">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-foreground/80 font-light leading-relaxed max-w-xl">
                 {slides[current].sub}
               </p>
             </motion.div>
@@ -97,7 +97,7 @@ const Hero = () => {
         </div>
 
         {/* Minimal slide indicators — bottom */}
-        <div className="flex gap-2 mt-10">
+        <div className="flex gap-2 mt-6 sm:mt-10">
           {slides.map((_, i) => (
             <button
               key={i}

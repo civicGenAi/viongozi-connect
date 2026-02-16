@@ -61,10 +61,10 @@ const FocusAreas = () => (
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <span className="text-accent font-semibold text-sm uppercase tracking-widest mb-2 block">
+        <span className="text-accent font-semibold text-xs sm:text-sm uppercase tracking-widest mb-2 block">
           What We Champion
         </span>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-black mb-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-black mb-3 sm:mb-4">
           Our Focus Areas
         </h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -107,7 +107,7 @@ const FocusAreas = () => (
               {/* Card - offset to create stair effect */}
               <div
                 className={`md:w-1/2 ${isLeft ? "md:pr-16" : "md:pl-16"}`}
-                style={{ marginTop: `${i * 20}px` }}
+                style={{ marginTop: i > 0 ? undefined : 0 }}
               >
                 <Link to={area.href} className="group block">
                   <div className="relative bg-card rounded-2xl p-6 md:p-8 border border-border hover:border-accent/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">

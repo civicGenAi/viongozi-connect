@@ -15,6 +15,12 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import EventDetail from "./pages/EventDetail";
+import News from "./pages/News";
+import SuccessStories from "./pages/SuccessStories";
+import Downloads from "./pages/Downloads";
+import FAQs from "./pages/FAQs";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
 import Politics from "./pages/focus/Politics";
 import Diplomacy from "./pages/focus/Diplomacy";
 import Business from "./pages/focus/Business";
@@ -43,6 +49,12 @@ const App = () => (
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/events/:slug" element={<EventDetail />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/success-stories" element={<SuccessStories />} />
+          <Route path="/downloads" element={<Downloads />} />
+          <Route path="/faqs" element={<FAQs />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="/focus/politics" element={<Politics />} />
           <Route path="/focus/diplomacy" element={<Diplomacy />} />
           <Route path="/focus/business" element={<Business />} />
